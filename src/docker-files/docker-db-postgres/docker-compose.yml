@@ -1,0 +1,22 @@
+version: "3"
+services:
+  postgres_db:
+    image: postgres:13
+    container_name: "pg_container"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: adult
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    #command: postgres -p 5433
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    restart: always
+
+volumes:
+  db_data:
