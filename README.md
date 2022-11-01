@@ -1,46 +1,46 @@
 # python-dev-test
 
 Como solução proposta ao teste foi criada uma solução, utilizando o SO Windows 10, com as seguintes caracteristiscas:<br>
-    \- Processo de ETL com o Airflow<br>
-    \- SGBD: Postgres:13
+    &nbsp\- Processo de ETL com o Airflow<br>
+    &nbsp\- SGBD: Postgres:13
 
 ## Características do Processo
 
 O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um intervalo de 1630 linhas por insert e um intervalo de 10 segundos para conjuntos de dados inseridos.
 
 <b>Dados do Banco de dados</b><br>
-    HOST=host.docker.internal<br>
-    DATABASE=adult<br>
-    USER=root<br>
-    PASSWORD=root
+    &nbspHOST=host.docker.internal<br>
+    &nbspDATABASE=adult<br>
+    &nbspUSER=root<br>
+    &nbspPASSWORD=root
 
 *<b>Criação de um arflow com as seguintes pastas: </b>
  \- \dags\
  
- \- \docker-files\
-    :\docker-files\docker-airflow\
-    :\docker-files\docker-db-postgres\
+ &nbsp\- \docker-files\
+ &nbsp\- \docker-files\docker-airflow\
+ &nbsp\- \docker-files\docker-db-postgres\
 
- \- \inputs\
-   \inputs\data
-   \inputs\queries 
+ &nbsp\- \inputs\
+ &nbsp\- \inputs\data
+ &nbsp\- \inputs\queries 
 
- \- \logs\
- \- \plugins\ 
-   \plugins\dataprocessing\
-   \plugins\operators\
-   \plugins\utils\
+ &nbsp\- \logs\
+ &nbsp\- \plugins\ 
+ &nbsp\- \plugins\dataprocessing\
+ &nbsp\- \plugins\operators\
+ &nbsp\- \plugins\utils\
 
 <b> Para configurar o processo do airflow, tem-se os arquivos: </b>
- - \docker-files\docker-airflow\docker-compose
- - \docker-files\docker-airflow\Dockerfile
- - \docker-files\docker-airflow\requeriments.txt
+ &nbsp\- \docker-files\docker-airflow\docker-compose
+ &nbsp\- \docker-files\docker-airflow\Dockerfile
+ &nbsp\- \docker-files\docker-airflow\requeriments.txt
 
 <b> Para configurar o processo do postgres, tem-se os arquivos: </b>
- \- \docker-files\docker-db-postgres\docker-compose
+ &nbsp\- \docker-files\docker-db-postgres\docker-compose
 
 <b> Para criação da tabela, foi criado o script adult.sql: </b>
- \- \inputs\queries\create\adult.aql
+ &nbsp\- \inputs\queries\create\adult.aql
  Script:
  ```
     create table if not exists public.adult (
@@ -66,14 +66,14 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
 
 
 <b>Para processar, temos o seguinte arquivo .py:</b>
- \- \plugins\dataprocessing\main.pyt
+ &nbsp\- \plugins\dataprocessing\main.pyt
  Nessa pasta tem uma função main com os tratamentos utilizados para processar o arquivo
  Tratamentos utilizados:<br>
-    - Remoção de duplicatas<br>
-    - Tratamento de registros inconstentes<br>
-    - Tratamento de números nulos
+   &nbsp&nbsp\- Remoção de duplicatas<br>
+   &nbsp&nbsp\- Tratamento de registros inconstentes<br>
+   &nbsp\&nbsp- Tratamento de números nulos
 
-*<b>Para auxiliar no processo de ingestão, foram criadas os seguintes objetos:</b>
+<b>Para auxiliar no processo de ingestão, foram criadas os seguintes objetos:</b>
 - DataToPostgresOperator: responsável por configurar os métodos de ingestão e com os seguintes parâmentros:
         task_id: nome da task 
         method: método a ser executado, entre eles:<br>
@@ -90,7 +90,7 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
         delimiter: delimitador, caso a ingestão seja por um arquivo csv<br>
         encoding: encoding do arquivo
 
-*<b>Para executar os parâmentros do processo:</b>
+<b>Para executar os parâmentros do processo:</b>
  \- Dag com o caminnho: \dags\dag_file_to_postgres.py
  ```
     # Declated DAG with parameters
