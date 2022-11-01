@@ -15,7 +15,7 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
     &nbsp;USER=root<br>
     &nbsp;PASSWORD=root
 
-*<b>Criação de um arflow com as seguintes pastas: </b><br>
+<b>Criação de um arflow com as seguintes pastas: </b><br>
  &nbsp;\- \dags\
  
  &nbsp;\- \docker-files\
