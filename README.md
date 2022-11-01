@@ -1,8 +1,8 @@
 # python-dev-test
 
 Como solução proposta ao teste foi criada uma solução, utilizando o SO Windows 10, com as seguintes caracteristiscas:<br>
-    &nbsp\- Processo de ETL com o Airflow<br>
-    &nbsp\- SGBD: Postgres:13
+    &nbsp;\- Processo de ETL com o Airflow<br>
+    &nbsp;\- SGBD: Postgres:13
 
 ## Características do Processo
 
