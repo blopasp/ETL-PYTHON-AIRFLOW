@@ -33,12 +33,14 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
  &nbsp;\- \plugins\utils\
 
 <b> Para configurar o processo do airflow, tem-se os arquivos: </b><br>
- &nbsp;\- \docker-files\docker-airflow\docker-compose
- &nbsp;\- \docker-files\docker-airflow\Dockerfile
- &nbsp;\- \docker-files\docker-airflow\requeriments.txt
+ &nbsp;\- \docker-files\docker-airflow\docker-compose<br>
+ &nbsp;\- \docker-files\docker-airflow\Dockerfile<br>
+ &nbsp;\- \docker-files\docker-airflow\requeriments.txt<br>
+ &nbsp;\- \docker-files\docker-airflow\.env
 
-<b> Para configurar o processo do postgres, tem-se os arquivos: </b>
- &nbsp;\- \docker-files\docker-db-postgres\docker-compose
+<b> Para configurar o processo do postgres, tem-se os arquivos: </b><br>
+ &nbsp;\- \docker-files\docker-db-postgres\docker-compose<br>
+ &nbsp;\- \docker-files\docker-db-postgres\.env<br>
 
 <b> Para criação da tabela, foi criado o script adult.sql: </b><br>
  &nbsp;\- \inputs\queries\create\adult.aql
