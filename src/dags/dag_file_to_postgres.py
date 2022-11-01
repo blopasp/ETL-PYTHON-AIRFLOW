@@ -32,10 +32,10 @@ cols_type = {
 # Declated DAG with parameters
 dag = DAG(
     dag_id="data_to_postgres",
-    schedule_interval = "@daily",
+    schedule_interval = "0 */1 * * *",
     dagrun_timeout=datetime.timedelta(minutes=60),
-    start_date = days_ago(1)
-    )
+    start_date = days_ago(0)
+) 
 
 # Creating task to create table
 task_create_table = DataToPostgresOperator(
@@ -46,7 +46,7 @@ task_create_table = DataToPostgresOperator(
                     execution_timeout=datetime.timedelta(hours=2),
                     dag = dag
                 )
-
+# Creating a task to truncate table
 task_truncate_table = DataToPostgresOperator(
                     task_id = "task_truncate_table",
                     conn_id = "adult_db_id",
@@ -55,14 +55,14 @@ task_truncate_table = DataToPostgresOperator(
                     execution_timeout=datetime.timedelta(hours=2),
                     dag = dag
                 )
-
+# Create task to oinsert table
 task_insert_data = DataToPostgresOperator(
                    task_id = "task_insert_data",
                    method = "insert_df_pandas",
                    table_name = "adult",
                    path_file = path_file,
                    cols_type = cols_type,
-                   range_data = 1300,
+                   range_data = 1630,
                    conn_id = conn_id,
                    execution_timeout=datetime.timedelta(hours=2),
                    step_time = 0,

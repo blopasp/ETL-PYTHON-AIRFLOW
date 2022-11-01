@@ -3,8 +3,18 @@ from psycopg2 import extras
 from pandas.core.frame import DataFrame
 import logging
 import time
+import numpy as np
 
 class DBPostgres:
+    """
+    DBPostgres: class created to make operations in a db postgres with
+    more facility.
+    args:
+    :param host: string type        - the host on the postgres is located
+    :param databse: string type     - the database to operate
+    :user: string type              - the user of postgres
+    :password:string type           - the password of the user
+    """
     def __init__(self, host, database, user, password):
         self.host = host
         self.database = database
@@ -20,6 +30,12 @@ class DBPostgres:
                           password = password) 
 
     def execute(self, command):
+        """Method execute
+        Args:
+            command (string): command sql to operate in db postgres
+        Returns:
+           Boolean
+        """
         try:
             with self.__conn.cursor() as cursor:
                 cursor.execute(command)
@@ -32,9 +48,24 @@ class DBPostgres:
             raise
         
     def truncate(self, table, schema = "public"):
+        """Method truncate
+        Args:
+            table (string): the table name
+            schema (string default "public"): the schema name, public default
+        Returns:
+            boolean
+        """
         self.execute(f"TRUNCATE {schema}.{table} CASCADE")
             
     def get_results_query(self, query, interval_register = 500):
+        """Method get_results_query
+        Method used to return data from a postgres database in dictionary form
+        Args:
+            query (string): the query to execute for returning data
+            interval_register (int): interval to returnind data, default: 150
+        Returns:
+            dict type
+        """
         with self.__conn.cursor(cursor_factory=extras.DictCursor) as cursor:
             cursor.execute(query)
             colunas = [x[0] for x in cursor.description]
@@ -52,9 +83,20 @@ class DBPostgres:
                range_data:int = 1000, 
                step_time:int = 10):
         print("Insert process initiated")
+        """Method insert
+        Args:
+            columns (List[str]): set of columns
+            data (List): set of data
+            table (string): the table name
+            schema (string default "public"): the schema name, public default
+            range_data (int default 1000): interval of rows number to insert
+            step_time (int default 10): interval of time to insert
+        Returns:
+            None
+        """
         columns = [('"'+column+'"') for column in columns]
         insert = f'''
-            INSERT INTO {schema}.{table} ({', '.join(columns)}) VALUES ({", ".join(['%s']*len(columns))})
+            INSERT INTO {schema}.{table} ({', '.join(columns)}) VALUES ({", ".join(["%s"]*len(columns))})
         '''
         a = 0
         b = range_data
@@ -71,7 +113,8 @@ class DBPostgres:
                 if b >= len_data:
                     b = len_data - 1
                     with self.__conn.cursor() as cursor:
-                        cursor.executemany(insert, [tuple(row) for row in data[a:b]])
+                        cursor.executemany(insert, [tuple(row) 
+                                                    for row in data[a:]])
                     self.__conn.commit()         
                     logging.info(f"Rows {a+1}:{len_data} insert with success")   
                     break
@@ -142,6 +185,19 @@ class DBPostgresPandas(DBPostgres):
                          table:str, schema:str = 'public', 
                          range_data:int = 1000,
                          step_time:int = 10):
+        """Method insert_df_pandas
+        This method insert a DataFrame Object Pandas into a table, observated some rules:
+         - The name cols must to be the same of the columns table
+         - The data type must to be like the data type of the table
+        Args:
+            df (pandas.core.frame.Dataframe: DataFrame object pandas to insert into a table
+            table (string): the table name
+            schema (string default "public"): the schema name, public default
+            range_data (int default 1000): interval of rows number to insert
+            step_time (int default 10): interval of time to insert
+        Returns:
+            None
+        """
         columns = list(df.columns)
         self.insert(columns = columns, 
                     data = df.values.tolist(), 
@@ -156,6 +212,19 @@ class DBPostgresPandas(DBPostgres):
                                     range_data:int = 1000,
                                     PK:str = None, 
                                     step_time:int = 10):
+        """Method created_table_from_df_pandas
+        This method created_table_from_df_pandas create a table with the same parameters
+        of DataFrame and insert the data into a table.
+        Args:
+            df (pandas.core.frame.Dataframe: DataFrame object pandas to insert into a table
+            table (string): the table name
+            schema (string default "public"): the schema name, public default
+            range_data (int default 1000): interval of rows number to insert
+            PK(str default None): Primaty key if set
+            step_time (int default 10): interval of time to insert
+        Returns:
+            None
+        """
         def columns_type(columns, dtype):
             if str(dtype).__contains__('int'):
                 return f"\n         {columns} integer"

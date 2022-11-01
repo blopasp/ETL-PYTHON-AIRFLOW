@@ -1,10 +1,8 @@
 test.py
 **venv
 *.bat
-*.env
 db
-logs/
 __pycache__
-docker-airflow/**
 **/*.pyc
 *.lnk
+logs/
