@@ -4,7 +4,7 @@ Como solução proposta ao teste foi criada uma solução, utilizando o SO Windo
     &nbsp;\- Processo de ETL com o Airflow<br>
     &nbsp;\- SGBD: Postgres:13
 
-==
+---
 ## Características do Processo
 
 O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um intervalo de 1630 linhas por insert e um intervalo de 10 segundos para conjuntos de dados inseridos.
@@ -15,7 +15,7 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
     &nbsp;USER=root<br>
     &nbsp;PASSWORD=root
 
-*<b>Criação de um arflow com as seguintes pastas: </b>
+*<b>Criação de um arflow com as seguintes pastas: </b><br>
  &nbsp;\- \dags\
  
  &nbsp;\- \docker-files\
@@ -32,7 +32,7 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
  &nbsp;\- \plugins\operators\
  &nbsp;\- \plugins\utils\
 
-<b> Para configurar o processo do airflow, tem-se os arquivos: </b>
+<b> Para configurar o processo do airflow, tem-se os arquivos: </b><br>
  &nbsp;\- \docker-files\docker-airflow\docker-compose
  &nbsp;\- \docker-files\docker-airflow\Dockerfile
  &nbsp;\- \docker-files\docker-airflow\requeriments.txt
@@ -40,7 +40,7 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
 <b> Para configurar o processo do postgres, tem-se os arquivos: </b>
  &nbsp;\- \docker-files\docker-db-postgres\docker-compose
 
-<b> Para criação da tabela, foi criado o script adult.sql: </b>
+<b> Para criação da tabela, foi criado o script adult.sql: </b><br>
  &nbsp;\- \inputs\queries\create\adult.aql
  Script:
  ```
@@ -66,16 +66,16 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
  ```
 
 
-<b>Para processar, temos o seguinte arquivo .py:</b>
+<b>Para processar, temos o seguinte arquivo .py:</b><br>
  &nbsp;\- \plugins\dataprocessing\main.pyt
  Nessa pasta tem uma função main com os tratamentos utilizados para processar o arquivo
  Tratamentos utilizados:<br>
    &nbsp;&nbsp;\- Remoção de duplicatas<br>
    &nbsp;&nbsp;\- Tratamento de registros inconstentes<br>
-   &nbsp;\&nbsp;- Tratamento de números nulos
+   &nbsp;&nbsp;\- Tratamento de números nulos
 
 <b>Para auxiliar no processo de ingestão, foram criadas os seguintes objetos:</b>
-- DataToPostgresOperator: responsável por configurar os métodos de ingestão e com os seguintes parâmentros:
+   &nbsp;\- DataToPostgresOperator: responsável por configurar os métodos de ingestão e com os seguintes parâmentros:<br>
         &nbsp;&nbsp;task_id: nome da task 
         &nbsp;&nbsp;method: método a ser executado, entre eles:<br>
             &nbsp;&nbsp;&nbsp;&nbsp;\- execute<br>
