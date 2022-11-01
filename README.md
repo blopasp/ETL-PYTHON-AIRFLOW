@@ -78,20 +78,20 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
 
 <b>Para auxiliar no processo de ingestão, foram criadas os seguintes objetos:</b><br>
    &nbsp;\- DataToPostgresOperator: responsável por configurar os métodos de ingestão e com os seguintes parâmentros:<br>
-        &nbsp;&nbsp;task_id: nome da task 
-        &nbsp;&nbsp;method: método a ser executado, entre eles:<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;\- execute<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;\- truncate<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;\- insert<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;\- insert_df_pandas <br>
-        &nbsp;&nbsp;conn_id: id da conexão armazenada dentro das connections do airflow<br>
-        &nbsp;&nbsp;path_file: caminho do arquivo a ser executado<br>
-        &nbsp;&nbsp;cols_type: nome e tipo das colunas <br>
-        &nbsp;&nbsp;table_name: nome da tabela <br>
-        &nbsp;&nbsp;range_data: intervalo de linhas a serem inseridas<br>
-        &nbsp;&nbsp;step_time: intervalo de tempo para cada ingestão<br>
-        &nbsp;&nbsp;delimiter: delimitador, caso a ingestão seja por um arquivo csv<br>
-        &nbsp;&nbsp;encoding: encoding do arquivo
+        &nbsp;&nbsp;&nbsp;&nbsp;task_id: nome da task 
+        &nbsp;&nbsp;&nbsp;&nbsp;method: método a ser executado, entre eles:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\- execute<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\- truncate<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\- insert<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\- insert_df_pandas <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;conn_id: id da conexão armazenada dentro das connections do airflow<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;path_file: caminho do arquivo a ser executado<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;cols_type: nome e tipo das colunas <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;table_name: nome da tabela <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;range_data: intervalo de linhas a serem inseridas<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;step_time: intervalo de tempo para cada ingestão<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;delimiter: delimitador, caso a ingestão seja por um arquivo csv<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;encoding: encoding do arquivo
 
 <b>Para executar os parâmentros do processo:</b><br>
  &nbsp;\- Dag com o caminnho: \dags\dag_file_to_postgres.py
