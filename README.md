@@ -74,7 +74,7 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
    &nbsp;&nbsp;\- Tratamento de registros inconstentes<br>
    &nbsp;&nbsp;\- Tratamento de números nulos
 
-<b>Para auxiliar no processo de ingestão, foram criadas os seguintes objetos:</b>
+<b>Para auxiliar no processo de ingestão, foram criadas os seguintes objetos:</b><br>
    &nbsp;\- DataToPostgresOperator: responsável por configurar os métodos de ingestão e com os seguintes parâmentros:<br>
         &nbsp;&nbsp;task_id: nome da task 
         &nbsp;&nbsp;method: método a ser executado, entre eles:<br>
@@ -91,7 +91,7 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
         &nbsp;&nbsp;delimiter: delimitador, caso a ingestão seja por um arquivo csv<br>
         &nbsp;&nbsp;encoding: encoding do arquivo
 
-<b>Para executar os parâmentros do processo:</b>
+<b>Para executar os parâmentros do processo:</b><br>
  &nbsp;\- Dag com o caminnho: \dags\dag_file_to_postgres.py
  ```
     # Declated DAG with parameters
