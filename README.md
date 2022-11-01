@@ -36,11 +36,11 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
  - \docker-files\docker-airflow\Dockerfile
  - \docker-files\docker-airflow\requeriments.txt
 
-*<b>Para configurar o processo do postgres, tem-se os arquivos: </b>
- - \docker-files\docker-db-postgres\docker-compose
+<b> Para configurar o processo do postgres, tem-se os arquivos: </b>
+ \- \docker-files\docker-db-postgres\docker-compose
 
-*<b>Para criação da tabela, foi criado o script adult.sql: </b>
- - \inputs\queries\create\adult.aql
+<b> Para criação da tabela, foi criado o script adult.sql: </b>
+ \- \inputs\queries\create\adult.aql
  Script:
  ```
     create table if not exists public.adult (
@@ -65,33 +65,33 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
  ```
 
 
-*<b>Para processar, temos o seguinte arquivo .py:</b>
- - \plugins\dataprocessing\main.pyt
+<b>Para processar, temos o seguinte arquivo .py:</b>
+ \- \plugins\dataprocessing\main.pyt
  Nessa pasta tem uma função main com os tratamentos utilizados para processar o arquivo
- Tratamentos utilizados:
-    - Remoção de duplicatas
-    - Tratamento de registros inconstentes
+ Tratamentos utilizados:<br>
+    - Remoção de duplicatas<br>
+    - Tratamento de registros inconstentes<br>
     - Tratamento de números nulos
 
 *<b>Para auxiliar no processo de ingestão, foram criadas os seguintes objetos:</b>
 - DataToPostgresOperator: responsável por configurar os métodos de ingestão e com os seguintes parâmentros:
         task_id: nome da task 
-        method: método a ser executado, entre eles:
-            - execute
-            - truncate
-            - insert
-            - insert_df_pandas 
-        conn_id: id da conexão armazenada dentro das connections do airflow
-        path_file: caminho do arquivo a ser executado
-        cols_type: nome e tipo das colunas 
-        table_name: nome da tabela 
-        range_data: intervalo de linhas a serem inseridas
-        step_time: intervalo de tempo para cada ingestão
-        delimiter: delimitador, caso a ingestão seja por um arquivo csv
+        method: método a ser executado, entre eles:<br>
+            - execute<br>
+            - truncate<br>
+            - insert<br>
+            - insert_df_pandas <br>
+        conn_id: id da conexão armazenada dentro das connections do airflow<br>
+        path_file: caminho do arquivo a ser executado<br>
+        cols_type: nome e tipo das colunas <br>
+        table_name: nome da tabela <br>
+        range_data: intervalo de linhas a serem inseridas<br>
+        step_time: intervalo de tempo para cada ingestão<br>
+        delimiter: delimitador, caso a ingestão seja por um arquivo csv<br>
         encoding: encoding do arquivo
 
 *<b>Para executar os parâmentros do processo:</b>
- - Dag com o caminnho: \dags\dag_file_to_postgres.py
+ \- Dag com o caminnho: \dags\dag_file_to_postgres.py
  ```
     # Declated DAG with parameters
     dag = DAG(
