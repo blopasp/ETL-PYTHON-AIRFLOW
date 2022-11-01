@@ -8,30 +8,30 @@ Como solução proposta ao teste foi criada uma solução, utilizando o SO Windo
 
 O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um intervalo de 1630 linhas por insert e um intervalo de 10 segundos para conjuntos de dados inseridos.
 
-<b>Dados do Banco de dados</b>
-    HOST=host.docker.internal
-    DATABASE=adult
-    USER=root
+<b>Dados do Banco de dados</b><br>
+    HOST=host.docker.internal<br>
+    DATABASE=adult<br>
+    USER=root<br>
     PASSWORD=root
 
 *<b>Criação de um arflow com as seguintes pastas: </b>
- - \dags\
+ \- \dags\
  
- - \docker-files\
+ \- \docker-files\
    \docker-files\docker-airflow\
    \docker-files\docker-db-postgres\
 
- - \inputs\
+ \- \inputs\
    \inputs\data
    \inputs\queries 
 
- - \logs\
- - \plugins\ 
+ \- \logs\
+ \- \plugins\ 
    \plugins\dataprocessing\
    \plugins\operators\
    \plugins\utils\
 
-*<b>Para configurar o processo do airflow, tem-se os arquivos: </b>
+<b> Para configurar o processo do airflow, tem-se os arquivos: </b>
  - \docker-files\docker-airflow\docker-compose
  - \docker-files\docker-airflow\Dockerfile
  - \docker-files\docker-airflow\requeriments.txt
