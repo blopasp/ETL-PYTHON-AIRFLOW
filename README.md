@@ -77,7 +77,7 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
    &nbsp;&nbsp;\- Tratamento de números nulos
 
 <b>Para auxiliar no processo de ingestão, foram criadas os seguintes objetos:</b><br>
-   &nbsp;\- DataToPostgresOperator: responsável por configurar os métodos de ingestão e com os seguintes parâmentros:<br>
+   &nbsp;\- DataToPostgresOperator: responsável por configurar os métodos de ingestão e com os seguintes parâmentros:<br><br>
         &nbsp;&nbsp;&nbsp;&nbsp;task_id: nome da task 
         &nbsp;&nbsp;&nbsp;&nbsp;method: método a ser executado, entre eles:<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\- execute<br>
