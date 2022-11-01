@@ -1,8 +1,8 @@
 # python-dev-test
 
-Como solução proposta ao teste foi criada uma solução, utilizando o SO Windows 10, com as seguintes caracteristiscas<br>
-\    - Processo de ETL com o Airflow
-\    - SGBD: Postgres:13
+Como solução proposta ao teste foi criada uma solução, utilizando o SO Windows 10, com as seguintes caracteristiscas:<br>
+    \- Processo de ETL com o Airflow<br>
+    \- SGBD: Postgres:13
 
 ## Características do Processo
 
@@ -18,8 +18,8 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
  \- \dags\
  
  \- \docker-files\
-   \docker-files\docker-airflow\
-   \docker-files\docker-db-postgres\
+    :\docker-files\docker-airflow\
+    :\docker-files\docker-db-postgres\
 
  \- \inputs\
    \inputs\data
