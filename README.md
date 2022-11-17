@@ -1,10 +1,3 @@
-# python-dev-test
-
-Como solução proposta ao teste foi criada uma solução, utilizando o SO Windows 10, com as seguintes caracteristiscas:<br>
-    &nbsp;\- Processo de ETL com o Airflow<br>
-    &nbsp;\- SGBD: Postgres:13
-
----
 ## Características do Processo
 
 O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um intervalo de 1630 linhas por insert e um intervalo de 10 segundos para conjuntos de dados inseridos.
