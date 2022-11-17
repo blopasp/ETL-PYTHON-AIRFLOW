@@ -11,19 +11,19 @@ O processo foi configurado para rodar a cada hora (cron: 0 */1 * * *), com um in
 <b>Criação de um arflow com as seguintes pastas: </b><br>
  &nbsp;\- \dags\
  
- &nbsp;\- \docker-files\
- &nbsp;\- \docker-files\docker-airflow\
- &nbsp;\- \docker-files\docker-db-postgres\
+ &nbsp;\- \docker-files\<br>
+ &nbsp;\- \docker-files\docker-airflow\<br>
+ &nbsp;\- \docker-files\docker-db-postgres\<br>
 
- &nbsp;\- \inputs\
- &nbsp;\- \inputs\data
- &nbsp;\- \inputs\queries 
+ &nbsp;\- \inputs\<br>
+ &nbsp;\- \inputs\data<br>
+ &nbsp;\- \inputs\queries <br>
 
- &nbsp;\- \logs\
- &nbsp;\- \plugins\ 
- &nbsp;\- \plugins\dataprocessing\
- &nbsp;\- \plugins\operators\
- &nbsp;\- \plugins\utils\
+ &nbsp;\- \logs\<br>
+ &nbsp;\- \plugins\ <br>
+ &nbsp;\- \plugins\dataprocessing\<br>
+ &nbsp;\- \plugins\operators\<br>
+ &nbsp;\- \plugins\utils\<br>
 
 <b> Para configurar o processo do airflow, tem-se os arquivos: </b><br>
  &nbsp;\- \docker-files\docker-airflow\docker-compose<br>
